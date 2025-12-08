@@ -49,9 +49,28 @@ default:
     echo '追加料金はありません。<br>';
     break;
 }
-
-for ($i=0; $i<10; $i++){
-    echo '<option value="',$i, '">', $i, '</option>';
+// for ($i=0; $i<10; $i++){
+//     echo '<option value="',$i, '">', $i, '</option>';
+// }
+$i=0;
+while ($i<10){
+  echo '<option value="', $i, '">', $i, '</option>';
+  $i++;
+}
+echo '選択した色は', $_REQUEST['color'], 'です。';
+echo '店舗コードは', $_REQUEST['code'], 'です。';
+if (isset($_REQUEST['gener'])){
+  foreach ($_REQUEST['gener'] as $item){
+    echo '<p>', $item, '</p>';
+  }
+  echo 'に関するお買い得情報をお送りさせて頂きます。<br>';
+}
+$postcode=$_REQUEST['postcode'];
+if (preg_match('/^[0-9]{3}-[0-9]{4}$/', $postcode)){
+// if (preg_match('/^[0-9]{7}$/', $postcode)){
+  echo '郵便番号は', $postcode, 'を確認しました。';
+} else {
+  echo $postcode, 'は適切な番号ではありません。';
 }
 ?>
 <?php require 'footer.php';?>

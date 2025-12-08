@@ -28,7 +28,41 @@ echo MESSAGE;
     <option value="7">7</option>
     <option value="8">8</option>
     <option value="9">9</option>
+  </select><br>
+  <select name="color">
+    <?php
+     $color=['ホワイト','ブルー','レッド','イエロー','ブラック'];
+     foreach ($color as $c){
+        echo '<option value="', $c,'">', $c, '</option>';
+     }
+    ?>
   </select>
+  <select name="code">
+    <?php
+    $store=[
+      '新宿'=>100,'秋葉原'=>101,'上野'=>102, '横浜'=>200,'川崎'=>201,
+      '札幌'=>300,'仙台'=>400,'名古屋'=>500, '京都'=>600,'博多'=>700
+    ];
+    foreach  ($store as $key=>$value){
+      echo '<option value="', $value, '">', $key, '</option>';
+    }
+    ?>
+  </select>
+  <?php
+  $gener=['カメラ','パソコン','時計','家電','書籍','文房具','食品'];
+  foreach ($gener as $item){
+    echo '<p>';
+    echo '<input type="checkbox" name="gener[]" value="', $item, '">';
+    echo $item;
+    echo '</p>';
+  }
+  date_default_timezone_set('Japan');
+  echo '<p>', date('Y/m/d H:i:s'), '</p>';
+  echo '<p>', date('Y年m月d日 H時i分s秒'), '</p>';
+  echo rand(1, 6);
+  echo '<img alt="image" src="item', rand(0, 2), '.png">';
+  ?>
+  <input type="text" name="postcode">
   <p><input type="submit" value="確定"></p>
 </form>
 <?php require './footer.php' ?>
